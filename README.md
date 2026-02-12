@@ -24,12 +24,13 @@ data/
 food_model.dart
 food_repository.dart
 view/
-food_list_page.dart
-food_detail_page.dart
+food_list_view.dart
+food_detail_view.dart
 widgets/
 food_card.dart
 cart/
 data/
 view/
 widgets/
+root.dart
 main.dart
