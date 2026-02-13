@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
+import 'package:hungry_app/features/auth/widgets/custom_btn.dart';
 import 'package:hungry_app/shared/custom_text.dart';
 import 'package:hungry_app/shared/custom_text_field.dart';
 
@@ -54,28 +55,13 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   Gap(55),
 
-                  GestureDetector(
+                  CustomAuthBtn(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        print('success login');
+                        print('success register');
                       }
                     },
-                    child: Container(
-                      height: 45,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
-                      ),
-
-                      width: double.infinity,
-                      child: Center(
-                        child: CustomText(
-                          text: 'login',
-                          weight: FontWeight.bold,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
-                    ),
+                    text: 'Sign up',
                   ),
                 ],
               ),
