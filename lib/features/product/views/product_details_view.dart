@@ -110,7 +110,13 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                     weight: FontWeight.bold,
                   ),
                   Spacer(),
-                  CustomButton(text: 'Add To Cart', onTap: () {}),
+                  CustomButton(
+                    width: 200,
+                    height: 70,
+                    size: 20,
+                    text: 'Add To Cart',
+                    onTap: () {},
+                  ),
                 ],
               ),
 
