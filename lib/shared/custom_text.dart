@@ -17,7 +17,7 @@ class CustomText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(color: color, fontWeight: weight),
+      style: TextStyle(color: color, fontWeight: weight, fontSize: size),
     );
   }
 }
