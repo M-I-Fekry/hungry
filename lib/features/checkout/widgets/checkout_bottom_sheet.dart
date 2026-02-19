@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:hungry_app/features/checkout/widgets/success_dailog.dart';
 import 'package:hungry_app/shared/custom_button.dart';
 import 'package:hungry_app/shared/custom_text.dart';
 
 class CheckoutBottomSheet extends StatelessWidget {
-  const CheckoutBottomSheet({super.key});
+  final String title;
+  final String price;
+  final String buttonText;
+  final VoidCallback onTap;
+  final double sheetHeight; 
+  final Color? btnColor;    
+
+  const CheckoutBottomSheet({
+    super.key,
+    required this.title,
+    required this.price,
+    required this.buttonText,
+    required this.onTap,
+    this.sheetHeight = 120,  
+    this.btnColor,         
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,37 +33,39 @@ class CheckoutBottomSheet extends StatelessWidget {
             offset: const Offset(0, 1),
           ),
         ],
-        borderRadius: BorderRadius.circular(30),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
       ),
-      height: 120,
+      height: sheetHeight,  
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Row(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Gap(16),
                 CustomText(
-                  text: 'Total price',
-                  size: 24,
+                  text: title,
+                  size: 20,
                   color: Colors.grey.shade600,
                 ),
-                CustomText(text: '\$20', size: 26, weight: FontWeight.bold),
+                CustomText(
+                  text: price,
+                  size: 24,
+                  weight: FontWeight.bold,
+                ),
               ],
             ),
             const Spacer(),
             CustomButton(
               width: 180,
               height: 55,
-              size: 20,
-              text: 'Pay Now',
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const SuccessDialog(),
-                );
-              },
+              size: 18,
+              text: buttonText,
+              onTap: onTap,
             ),
           ],
         ),
