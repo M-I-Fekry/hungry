@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
+import 'package:hungry_app/features/checkout/widgets/checkout_bottom_sheet.dart';
 import 'package:hungry_app/features/product/widgets/spicy_slider.dart';
 import 'package:hungry_app/features/product/widgets/topping_card.dart';
 import 'package:hungry_app/shared/custom_button.dart';
@@ -101,29 +102,19 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                   },
                 ),
               ),
-              Gap(30),
-              Row(
-                children: [
-                  CustomText(
-                    text: '  Total\n  \$18.9',
-                    size: 30,
-                    weight: FontWeight.bold,
-                  ),
-                  Spacer(),
-                  CustomButton(
-                    width: 200,
-                    height: 70,
-                    size: 20,
-                    text: 'Add To Cart',
-                    onTap: () {},
-                  ),
-                ],
-              ),
-
-              Gap(40),
+              Gap(300),
             ],
           ),
         ),
+      ),
+
+      bottomSheet: CheckoutBottomSheet(
+        title: 'Total',
+        price: '\$20',
+        buttonText: 'Add To Cart',
+        onTap: () {
+          print('Added to cart!'); 
+        },
       ),
     );
   }
