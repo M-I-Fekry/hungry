@@ -7,6 +7,7 @@ import 'package:hungry_app/features/home/widgets/card_item.dart';
 import 'package:hungry_app/features/home/widgets/food_category.dart';
 import 'package:hungry_app/features/home/widgets/search_field.dart';
 import 'package:hungry_app/features/home/widgets/user_header.dart';
+import 'package:hungry_app/features/product/views/product_details_view.dart';
 import 'package:hungry_app/shared/custom_text.dart';
 
 class HomeView extends StatefulWidget {
@@ -28,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
           slivers: [
             //header
             SliverAppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               toolbarHeight: 180,
               elevation: 0,
@@ -58,17 +60,29 @@ class _HomeViewState extends State<HomeView> {
               sliver: SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 0.7,
+                  childAspectRatio: 0.73,
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 6,
                 ),
                 delegate: SliverChildBuilderDelegate(
                   childCount: 6,
-                  (context, index) => CardItem(
-                    image: 'assets/test/test.png',
-                    text: 'Cheeseburger',
-                    desc: 'Wendy"s Burger',
-                    rate: '4.9',
+                  (context, index) => GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (c) {
+                            return ProductDetailsView();
+                          },
+                        ),
+                      );
+                    },
+                    child: CardItem(
+                      image: 'assets/test/test.png',
+                      text: 'Cheeseburger',
+                      desc: 'Wendy"s Burger',
+                      rate: '4.9',
+                    ),
                   ),
                 ),
               ),
