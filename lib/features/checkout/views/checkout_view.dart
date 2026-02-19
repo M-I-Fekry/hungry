@@ -62,7 +62,17 @@ class _CheckoutViewState extends State<CheckoutView> {
         ),
       ),
 
-      bottomSheet: const CheckoutBottomSheet(),
+      bottomSheet: CheckoutBottomSheet(
+        title: 'Total price',
+        price: '\$20',
+        buttonText: 'Pay Now',
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SuccessDialog(),
+          );
+        },
+      ),
     );
   }
 }
