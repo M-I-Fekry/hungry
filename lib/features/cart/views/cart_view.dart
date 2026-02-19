@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/features/cart/widgets/cart_item.dart';
+import 'package:hungry_app/features/checkout/views/checkout_view.dart';
+import 'package:hungry_app/features/checkout/widgets/checkout_bottom_sheet.dart';
 import 'package:hungry_app/shared/custom_button.dart';
 import 'package:hungry_app/shared/custom_text.dart';
 
@@ -50,50 +52,35 @@ class _CartViewState extends State<CartView> {
           padding: const EdgeInsets.only(top: 15, bottom: 120),
           itemCount: itemCount,
           itemBuilder: (context, index) {
-            return CartItem(
-              image: 'assets/test/test.png',
-              text: 'Hamburger',
-              desc: 'Veggie Burger',
-              number: quantities[index],
-              onAdd: () => onAdd(index),
-              onMinus: () => onMinus(index),
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 3),
+              child: CartItem(
+                image: 'assets/test/test.png',
+                text: 'Hamburger',
+                desc: 'Veggie Burger',
+                number: quantities[index],
+                onAdd: () => onAdd(index),
+                onMinus: () => onMinus(index),
+              ),
             );
           },
         ),
       ),
-      bottomSheet: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 30,
-              offset: Offset(0, -2),
+      bottomSheet: CheckoutBottomSheet(
+        buttonText: 'Checkout',
+        sheetHeight: 90,
+        title: 'Total',
+        price: '\$15.9',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) {
+                return CheckoutView();
+              },
             ),
-          ],
-        ),
-        child: Row(
-          children: [
-            CustomText(
-              text: '  Total\n  \$18.9',
-              size: 28,
-              weight: FontWeight.bold,
-            ),
-            const Spacer(),
-            CustomButton(
-              width: 175,
-              height: 60,
-              size: 20,
-              text: 'Checkout',
-              onTap: () {},
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
