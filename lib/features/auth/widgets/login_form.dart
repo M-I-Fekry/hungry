@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/features/auth/view/signup_view.dart';
 import 'package:hungry_app/features/auth/widgets/auth_switch_text.dart';
+import 'package:hungry_app/features/auth/widgets/continue_guest_text.dart';
 import 'package:hungry_app/features/auth/widgets/custom_btn.dart';
 import 'package:hungry_app/root.dart';
 import 'package:hungry_app/shared/custom_text_field.dart';
@@ -74,24 +75,7 @@ class _LoginFormState extends State<LoginForm> {
             },
           ),
           const Gap(15),
-
-          GestureDetector(
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Root()),
-              );
-            },
-            child: Text(
-              'Continue as a Guest',
-              style: TextStyle(
-                color: AppColors.primaryColor,
-                decoration: TextDecoration.underline,
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
+          ContinueGuestText(),
         ],
       ),
     );
