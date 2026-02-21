@@ -8,8 +8,8 @@ class CheckoutBottomSheet extends StatelessWidget {
   final String price;
   final String buttonText;
   final VoidCallback onTap;
-  final double sheetHeight; 
-  final Color? btnColor;    
+  final double sheetHeight;
+  final Color? btnColor;
 
   const CheckoutBottomSheet({
     super.key,
@@ -17,8 +17,8 @@ class CheckoutBottomSheet extends StatelessWidget {
     required this.price,
     required this.buttonText,
     required this.onTap,
-    this.sheetHeight = 120,  
-    this.btnColor,         
+    this.sheetHeight = 120,
+    this.btnColor,
   });
 
   @override
@@ -28,7 +28,7 @@ class CheckoutBottomSheet extends StatelessWidget {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.shade800,
+            color: Colors.grey.shade600,
             blurRadius: 15,
             offset: const Offset(0, 1),
           ),
@@ -38,7 +38,7 @@ class CheckoutBottomSheet extends StatelessWidget {
           topRight: Radius.circular(30),
         ),
       ),
-      height: sheetHeight,  
+      height: sheetHeight,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Row(
@@ -47,16 +47,8 @@ class CheckoutBottomSheet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText(
-                  text: title,
-                  size: 20,
-                  color: Colors.grey.shade600,
-                ),
-                CustomText(
-                  text: price,
-                  size: 24,
-                  weight: FontWeight.bold,
-                ),
+                CustomText(text: title, size: 20, color: Colors.grey.shade600),
+                CustomText(text: price, size: 24, weight: FontWeight.bold),
               ],
             ),
             const Spacer(),
