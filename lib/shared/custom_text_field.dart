@@ -8,10 +8,15 @@ class CustomTextField extends StatefulWidget {
     required this.hintText,
     required this.isPassword,
     required this.controlle,
+    this.fillColor = Colors.white,
+    this.borderColor = Colors.white,
   });
+
   final String hintText;
   final bool isPassword;
   final TextEditingController controlle;
+  final Color fillColor;
+  final Color borderColor;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -19,6 +24,7 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   late bool _obscureText = false;
+
   @override
   void initState() {
     _obscureText = widget.isPassword;
@@ -35,10 +41,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (v) {
-        if (v == null||v.isEmpty) {
+        if (v == null || v.isEmpty) {
           return 'please fill ${widget.hintText}';
         }
-        null;
+        return null;
       },
       controller: widget.controlle,
       obscureText: _obscureText,
@@ -48,18 +54,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
         suffixIcon: widget.isPassword
             ? GestureDetector(
                 onTap: _togglePassword,
-                child: Icon(CupertinoIcons.eye),
+                child: Icon(
+                  _obscureText ? CupertinoIcons.eye_slash : CupertinoIcons.eye,
+                  color: Colors.grey,
+                ),
               )
             : null,
         hintText: widget.hintText,
-        fillColor: Colors.white,
+        fillColor: widget.fillColor,
         filled: true,
+
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
-          borderRadius: BorderRadius.circular(5),
+          borderSide: BorderSide(color: widget.borderColor),
+          borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white),
+          borderSide: BorderSide(color: AppColors.primaryColor),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
     );
