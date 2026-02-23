@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hungry_app/features/auth/view/login_view.dart';
 
 class LogoutButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -10,7 +11,16 @@ class LogoutButton extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: OutlinedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (c) {
+                return const LoginView();
+              },
+            ),
+          );
+        },
         style: OutlinedButton.styleFrom(
           side: BorderSide(color: Colors.red.shade300, width: 1.5),
           shape: RoundedRectangleBorder(
